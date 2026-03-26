@@ -5,32 +5,23 @@ public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 50;
     public int currentHealth;
-
-    public Image healthFill; 
+    public Slider healthSlider;
 
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthBar();
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     public void TakeDamage(int damage)
     {
-
         currentHealth -= damage;
-        UpdateHealthBar();
+        healthSlider.value = currentHealth;
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
-        }
-    }
-
-    void UpdateHealthBar()
-    {
-        if (healthFill != null)
-        {
-            healthFill.fillAmount = (float)currentHealth / maxHealth;
         }
     }
 }

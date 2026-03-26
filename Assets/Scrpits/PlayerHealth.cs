@@ -5,30 +5,19 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-
     public Slider healthBar;
 
     void Start()
     {
         currentHealth = maxHealth;
-
-        if (healthBar != null)
-        {
-            healthBar.maxValue = maxHealth;
-            healthBar.value = currentHealth;
-        }
-        else
-        {
-            Debug.LogError("No has asignado el Slider de PlayerHP en el Inspector");
-        }
+        healthBar.maxValue = maxHealth;
+        healthBar.value = currentHealth;
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        if (healthBar != null)
-            healthBar.value = currentHealth;
+        healthBar.value = currentHealth;
 
         if (currentHealth <= 0)
         {
